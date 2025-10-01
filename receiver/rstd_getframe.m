@@ -2,7 +2,8 @@ function status = rstd_getframe(u, cip, fixport)
     fixport = str2num(fixport);
     fix_path = 'C:\\distributed_data';
     mkdir(fix_path);
-    save_path = strcat(fix_path, '\\', 'adc_data.bin');
+    date=datetime('today')
+    save_path = strcat(fix_path, '\\', string(today),'\\','adc_data.bin');
     Lua_String = strcat('ar1.CaptureCardConfig_StartRecord("', save_path, '", 1)');
     ErrStatus = RtttNetClientAPI.RtttNetClient.SendCommand(Lua_String);
     if (ErrStatus ~= 30000)
